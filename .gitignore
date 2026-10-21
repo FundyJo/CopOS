@@ -1,0 +1,15 @@
+out/
+target/
+iso/
+build/
+*.o
+*.obj
+*.bin
+*.elf
+*.efi
+*.img
+*.iso
+*.map
+*.log
+*.tmp
+.DS_Store
