@@ -2,8 +2,19 @@
 
 ## Tatsächlich ausgeführte Prüfungen
 
-- `cargo xtask check`: Toolchain-Prüfung.
-- Lokaler Compile/Build je nach verfügbarer Host-Toolchain (siehe Abschlussbericht).
+Ausgeführt am 2026-10-21 im bereitgestellten CI-Workspace:
+
+1. `cargo xtask check`
+2. `cargo xtask build-bios`
+3. `cargo xtask build-uefi`
+4. `cargo xtask build`
+
+Ergebnis:
+
+- `check`: erfolgreich; meldet fehlende optionale Tools in der Umgebung (`qemu-system-x86_64`, `xorriso`, `mcopy`, OVMF-Dateien).
+- `build-bios`: erfolgreich; erzeugt `out/kernel.elf` und `out/bios/bios-boot.img`.
+- `build-uefi`: nicht erfolgreich wegen fehlender `gnu-efi`-Header/Libs (`/usr/include/efi`, `/usr/lib/elf_x86_64_efi.lds`, `libefi.a`, `libgnuefi.a`).
+- `build`: bricht wie erwartet am UEFI-Schritt wegen derselben fehlenden Abhängigkeiten ab.
 
 ## BIOS Boot-Testplan
 
